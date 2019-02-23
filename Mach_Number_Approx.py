@@ -20,17 +20,19 @@ for m1 in machNums:
 
 #Extreme interpolation
 f = interpolate.interp1d(pRatio, machNums)
+p = np.polyfit(pRatio, machNums, int(input("Polynomial Degree: ")))
+fitted = []
+for val in machNums:
+    eq = 0
+    for i in range(len(p)):
+        eq += p[i] * (val ** i)
+    fitted.append(eq)
+
 
 #Extreme plotting
 plt.axhline(y=1, linewidth=1, color='#A9A9A9')
-plt.plot(pRatio, f(pRatio), 'm-')
+plt.plot(pRatio, f(pRatio), 'm-', pRatio, fitted, 'b-')
 plt.xlabel('Pressure Ratio')
 plt.ylabel('Mach Number')
 plt.title('Approximating the Mach Number')
 plt.show()
-
-#Put that in .csv
-with open('Mach_Number_Approx.csv', 'w') as csvFile:
-    writer = csv.writer(csvFile)
-    for i in range(len(machNums)):
-        writer.writerows(str(pRatio[i]), str(machNums[i]))
