@@ -20,20 +20,23 @@ for m1 in machNums:
 
 #Extreme interpolation
 #f = interpolate.interp1d(pRatio, machNums)
-p = np.polyfit(machNums, pRatio, 3)
+
+#Line fitting
+deg = 4
+p = np.polyfit(machNums, pRatio, deg)
 fitted = []
 for val in machNums:
     eq = 0
-    for i in range(len(p)):
-        eq += p[i] * (val ** i)
+    for i in range(deg + 1):
+        eq += p[i] * (val ** (deg - i))
     fitted.append(eq)
 
 
 #Extreme plotting
-plt.axhline(y=1, linewidth=1, color='#A9A9A9')
-plt.plot(machNums, pRatio, 'm-', linewidth = 0.5)
-plt.plot(machNums, fitted, 'b-', linewidth = 0.5)
-plt.xlim(-1, 2)
+plt.axhline(y=1, label = 'Mach 1', linewidth=1, color='#A9A9A9')
+plt.plot(machNums, pRatio, 'm-', label = 'Calculated', linewidth = 0.5)
+plt.plot(machNums, fitted, 'b-', label = 'Fitted', linewidth = 0.5)
+plt.legend()
 plt.xlabel('Pressure Ratio')
 plt.ylabel('Mach Number')
 plt.title('Approximating the Mach Number')
