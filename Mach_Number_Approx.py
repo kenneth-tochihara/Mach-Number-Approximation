@@ -28,7 +28,6 @@ for val in machNums:
         eq += p[i] * (val ** i)
     fitted.append(eq)
 
-
 #Extreme plotting
 plt.axhline(y=1, linewidth=1, color='#A9A9A9')
 plt.plot(pRatio, f(pRatio), 'm-', pRatio, fitted, 'b-')
