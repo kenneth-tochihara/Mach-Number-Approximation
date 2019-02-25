@@ -19,11 +19,11 @@ for m1 in machNums:
         pRatio.append((((gam + 1)**2 * m1**2)/((4 * gam * m1**2) - 2 * (gam - 1)))**(gam /(gam - 1)) * ((1 - gam + (2 * gam * (m1**2)))/(gam + 1)))
 
 #Extreme interpolation
-
+f = interpolate.interp1d(pRatio, machNums)
 
 #Extreme plotting
 plt.axhline(y=1, linewidth=1, color='#A9A9A9')
-plt.plot(pRatio, f(pRatio), 'm-', pRatio, fitted, 'b-')
+plt.plot(pRatio, f(pRatio), 'mo')
 plt.xlabel('Pressure Ratio')
 plt.ylabel('Mach Number')
 plt.title('Approximating the Mach Number')
