@@ -19,14 +19,7 @@ for m1 in machNums:
         pRatio.append((((gam + 1)**2 * m1**2)/((4 * gam * m1**2) - 2 * (gam - 1)))**(gam /(gam - 1)) * ((1 - gam + (2 * gam * (m1**2)))/(gam + 1)))
 
 #Extreme interpolation
-f = interpolate.interp1d(pRatio, machNums)
-p = np.polyfit(pRatio, machNums, int(input("Polynomial Degree: ")))
-fitted = []
-for val in machNums:
-    eq = 0
-    for i in range(len(p)):
-        eq += p[i] * (val ** i)
-    fitted.append(eq)
+
 
 #Extreme plotting
 plt.axhline(y=1, linewidth=1, color='#A9A9A9')
