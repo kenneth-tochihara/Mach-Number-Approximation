@@ -23,7 +23,7 @@ f = interpolate.interp1d(pRatio, machNums)
 
 #Extreme plotting
 plt.axhline(y=1, linewidth=1, color='#A9A9A9')
-plt.plot(pRatio, f(pRatio), 'mo')
+plt.plot(pRatio, f(pRatio), 'm-')
 plt.xlabel('Pressure Ratio')
 plt.ylabel('Mach Number')
 plt.title('Approximating the Mach Number')
