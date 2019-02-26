@@ -1,8 +1,6 @@
 #Import some stuff
 from scipy import interpolate
-import matplotlib.pyplot as plt
 import numpy as np
-import csv
 
 #Constants and arrays
 machNums = np.arange(0.0, 1.601, 0.001)
@@ -18,13 +16,20 @@ for m1 in machNums:
         #Find p02/p1
         pRatio.append((((gam + 1)**2 * m1**2)/((4 * gam * m1**2) - 2 * (gam - 1)))**(gam /(gam - 1)) * ((1 - gam + (2 * gam * (m1**2)))/(gam + 1)))
 
-#Extreme interpolation
+#Interpolation
 f = interpolate.interp1d(pRatio, machNums)
 
-#Extreme plotting
-plt.axhline(y=1, linewidth=1, color='#A9A9A9')
-plt.plot(pRatio, f(pRatio), 'mo')
-plt.xlabel('Pressure Ratio')
-plt.ylabel('Mach Number')
-plt.title('Approximating the Mach Number')
-plt.show()
+#Tell user input range
+min, max = min(pRatio), max(pRatio)
+print(f'Min: {min}\nMax: {max}')
+
+#User Input/Output
+ans = ""
+while ans is "":
+    try:
+        p = float(input("Pressure Ratio: "))
+        print(f"Mach Number: {f(p)}")
+    except:
+        print("Invalid input.") #Takes into account the fact that input could be invalid.
+        pass
+    ans = input("Again? (Enter to continue)")
