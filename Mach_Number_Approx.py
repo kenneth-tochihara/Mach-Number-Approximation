@@ -20,16 +20,15 @@ for m1 in machNums:
 f = interpolate.interp1d(pRatio, machNums)
 
 #Tell user input range
-min, max = min(pRatio), max(pRatio)
-print(f'Min: {min}\nMax: {max}')
+print('Min: %d\nMax: %d' % (min(pRatio), max(pRatio)))
 
 #User Input/Output
 ans = ""
 while ans is "":
     try:
-        p = float(input("Pressure Ratio: "))
-        print(f"Mach Number: {f(p)}")
+        p = float(raw_input("Pressure Ratio: "))
+        print("Mach Number: %d" % f(p))
     except:
         print("Invalid input.") #Takes into account the fact that input could be invalid.
         pass
-    ans = input("Again? (Enter to continue)")
+    ans = raw_input("Again? (Enter to continue)")
