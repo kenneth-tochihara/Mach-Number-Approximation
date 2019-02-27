@@ -20,8 +20,7 @@ for m1 in machNums:
 f = interpolate.interp1d(pRatio, machNums)
 
 #Tell user input range
-min, max = min(pRatio), max(pRatio)
-print(f'Min: {min}\nMax: {max}')
+print(f'Min: {min(pRatio)}\nMax: {max(pRatio)}')
 
 #User Input/Output
 ans = ""
