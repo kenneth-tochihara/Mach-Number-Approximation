@@ -2,7 +2,6 @@
 from scipy import interpolate
 import matplotlib.pyplot as plt
 import numpy as np
-import csv
 
 #Constants and arrays
 machNums = np.arange(0.0, 1.601, 0.001)
