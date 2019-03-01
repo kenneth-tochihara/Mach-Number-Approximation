@@ -13,6 +13,7 @@ import numpy as np
 machNums = np.arange(0.0, 1.601, 0.001)
 pRatio = []
 gam = 1.4
+R = 286
 
 # Calculates the pressure ratios
 for m1 in machNums:
@@ -30,6 +31,6 @@ f = interpolate.interp1d(pRatio, machNums)
 def get_machNum(pRatio):
     return f(pRatio)
 
-## Convert machNum to a velocity m/s
+## Convert machNum to a velocity m/s and take in machNum and temp(K)
 def get_velocity(machNum, temp):
-    return machNum * temp
+    return machNum * (gam * R * temp) ** (1/2)
